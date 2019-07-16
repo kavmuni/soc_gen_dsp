@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jun 17 10:07:16 2019
+
+@author: gunnvantsaini
+"""
+
+### how we can get any text data into python
+path="/Users/gunnvantsaini/Documents/Work/Jigsaw Academy/IPBA/Introduction R /Data/sample_json.json"
+
+f=open(path,"r")
+data=f.read()
+f.close()
+type(data)
+import json
+data_json=json.loads(data)
+type(data_json)
+
+def get_json(path):
+    f=open(path,"r")
+    data=f.read()
+    f.close()
+    data_json=json.loads(data)
+    return data_json
+
+data_json.keys()
+data_json['batters']['batter'][0]['id']
+
+### For all the batters, extract the id and type in two separate lists?
+a=[]
+b=[]
+for i in data_json['batters']['batter']:
+    a.append(i['id'])
+    b.append(i['type'])
+
+## List comprehension?
+## [i for i in sequence]
+ID=[i['id'] for i in data_json['batters']['batter']]
+TYPE=[i['type'] for i in data_json['batters']['batter']]  
+
+## map?
+## list(map(func,sequence)) ===> func(x_i) of sequence
+
+def get_id(x):
+    return x['id']
+list(map(get_id,data_json['batters']['batter']))
+    
+### File 2
+path="/Users/gunnvantsaini/Documents/Work/large.json"
+f=open(path,'r')
+data=f.read()
+f.close()
+
+data_json=json.loads(data)
+data_json.keys()
+
+type(data_json['features'])
+len(data_json['features'])
+data_json['features'][0].keys()
+##
+data_json['features'][0]['properties']['mag']
+## Extract mag from all 405 records?
+mag=[]
+for i in data_json['features']:
+    mag.append(i['properties']['mag'])
+## How to create a list comprehension?
+mag=[i['properties']['mag'] for i in data_json['features']]
+## [{},{},{},{}]
+## How to write a map? func(i) for all i in sequence
+def get_id(x):
+    return x['properties']['mag']
+
+list(map(get_id,data_json['features']))
+    
+
+import xml  ### relevant library 
+## Tabular data manipulation ----> Pandas
+import pandas as pd
+path="/Users/gunnvantsaini/Data/Work/Python Trainings/PythonAdvanced/Data/tweets_assignment.txt"
+
+data_table=pd.read_csv(path,sep="|")
+
+import cv2
+cv2.imread(path_to_any_image_file)
+ 

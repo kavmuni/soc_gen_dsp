@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jun 12 14:18:01 2019
+
+@author: gunnvantsaini
+"""
+
+### Numbers
+## explicit type definition, dynamically typed
+a=67
+b=67.0
+type(a)
+type(b)
+
+## Strings: iterable
+# index, loop on it
+s="socgen"
+
+#indexation
+s[0]
+s[-2]
+s[0:3]
+
+#for i in s(define what happens in a loop)
+for i in s:
+    print(i)
+
+## Object oriented language
+# What are the different operation I can do on a string object?
+
+print(dir(s))
+
+s.upper()
+
+###
+count=0
+for i in assign_txt:
+    if i.isupper():
+        count=count+1
+
+### lists: buckets that can store anything
+L=[2,333,'uie',[89,90,'cde']]        
+L[-1][-1][1]
+L[3][-1][1]
+
+### What are the operations I can do with a list?
+print(dir(L))
+L.append(4444)
+
+b=[]
+for i in [1,2,3,4,5]:
+    b.append(i**2)
+
+'''empty list
+we a run a loop and do some operation
+append the results in empty list'''
+
+len(L)
+
+a="this is year 1994 one, this is year two 2001"
+years=[]
+bow=a.split(" ")
+for word in bow:
+    if word.isnumeric() and len(word)==4:
+        years.append(word)
+        
+### list comprehensions
+### maps
+### lambda functions
+
+###
+a=[1,2,3,4,5]
+
+### which contains the cube of all the numbers in a
+b=[]
+for i in a:
+    b.append(i**3)
+
+####
+b=[i**3 for i in a if i satisfies some conditon]
+### [expr(i) for i in a] 
+
+### Write list comprehension which contains only even cubes from a?
+b=[i**3 for i in a if i%2==0]
+
+b=[]
+for i in a:
+    if i%2==0:
+        b.append(i**3)
+   
+### mapping a function to each element of a sequence       
+'''        
+for i in some_seq:
+    f(i)
+'''
+
+def cube(x):
+    return x**3
+list(map(cube,a))
+
+### modify the map example to return only even cubes
+
+f,seq
+f(i)
+def cube(x):
+    if x%2==0:
+        return x**3
+    else:
+        return x
+list(map(cube,a))
+
+
+## lambda functions are inline functions  
+# when we need to define any trivial function  
+# we don't have any function name
+x=lambda x:x**3
+list(map(x,a))
